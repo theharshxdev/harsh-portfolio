@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsh Parikh — AI/ML Developer</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="Harsh Parikh — AI/ML Developer specializing in deep learning, NLP, computer vision, and production MLOps. Transforming ideas into intelligent solutions." />
+  <meta name="keywords" content="Harsh Parikh, AI Developer, Machine Learning, Deep Learning, NLP, Computer Vision, Data Science, MLOps, Portfolio" />
+  <meta name="author" content="Harsh Parikh" />
+  <link rel="canonical" href="https://your-domain.example" />
+
+  <!-- Social (Open Graph / Twitter) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Harsh Parikh — AI/ML Developer" />
+  <meta property="og:description" content="AI/ML developer building real‑world solutions: OCR, LLM apps, resume screening, churn prediction, and more." />
+  <meta property="og:image" content="/assets/og-image.jpg" />
+  <meta property="og:url" content="https://your-domain.example" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- Theme color (astrology‑aligned: indigo/purple with gold accent) -->
+  <meta name="theme-color" content="#5b63e4" />
+
+  <style>
+    /* =====================
+       Design Tokens
+       Astrology‑aligned palette: Saturn (8) & Rahu dasha → indigo/purple + gold accent
+       ===================== */
+    :root {
+      --bg-grad-start: #5b63e4;  /* deeper indigo */
+      --bg-grad-end:   #6f3fa8;  /* royal purple */
+      --text: #1f2937;           /* slate-800 */
+      --muted: #6b7280;          /* gray-500 */
+      --card: #ffffff;           /* white */
+      --card-muted: #f8f9fb;     /* very light */
+      --accent: #d4af37;         /* gold */
+      --shadow: 0 10px 30px rgba(0,0,0,.12);
+      --radius: 16px;
+    }
+
+    /* Dark mode tokens */
+    .dark {
+      --bg-grad-start: #0f172a;  /* slate-900 */
+      --bg-grad-end:   #1e1b4b;  /* indigo‑950 */
+      --text: #e5e7eb;           /* gray-200 */
+      --muted: #a1a1aa;          /* zinc-400 */
+      --card: #121826;           /* dark panel */
+      --card-muted: #0b1020;     /* darker */
+      --accent: #ffd166;         /* softer gold */
+      --shadow: 0 12px 36px rgba(0,0,0,.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%);
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 1000; width: 100%;
+      background: rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+    .dark header { background: rgba(17,24,39,0.5); }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .logo { font-weight: 800; letter-spacing: .3px; color: #fff; }
+    .nav-links { display: flex; list-style: none; gap: 1.5rem; }
+    .nav-links a { color: #fff; text-decoration: none; font-weight: 500; position: relative; }
+    .nav-links a:after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+    .nav-links a:hover:after { transform: scaleX(1); }
+
+    .actions { display: flex; align-items: center; gap: .75rem; }
+    .toggle { border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 6px 12px; color: #fff; background: transparent; cursor: pointer; }
+
+    /* Hero */
+    .hero { min-height: 100vh; display: grid; place-items: center; color: #fff; text-align: center; position: relative; }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); letter-spacing: .4px; text-shadow: 2px 2px 4px rgba(0,0,0,.25); }
+    .subtitle { font-size: clamp(1rem, 3.2vw, 1.35rem); opacity: .95; margin-top: 10px; }
+    .hero p.lead { margin: 18px auto 28px; max-width: 760px; font-size: 1.05rem; opacity: .95; }
+    .cta { display: inline-flex; align-items: center; gap: .6rem; padding: 12px 18px; border-radius: 999px; text-decoration: none; color: #111; background: linear-gradient(45deg, var(--accent), #ffe9a6); box-shadow: var(--shadow); font-weight: 700; }
+    .cta:hover { transform: translateY(-2px); }
+
+    .floating-elements { position: absolute; inset: 0; pointer-events: none; }
+    .floating-circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.10); animation: float 6s ease-in-out infinite; }
+    .circle1 { width: 80px; height: 80px; top: 18%; left: 10%; animation-delay: 0s; }
+    .circle2 { width: 120px; height: 120px; top: 64%; right: 12%; animation-delay: 2s; }
+    .circle3 { width: 60px; height: 60px; bottom: 18%; left: 22%; animation-delay: 4s; }
+
+    @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-18px) } }
+
+    /* Sections */
+    .section { padding: 90px 0; background: var(--card); }
+    .section.alt { background: var(--card-muted); }
+    .section-title { text-align: center; font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 2.6rem; position: relative; color: var(--text); }
+    .section-title:after { content: ""; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 62px; height: 3px; background: linear-gradient(90deg, var(--bg-grad-start), var(--bg-grad-end)); border-radius: 99px; }
+
+    /* Grid Cards */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(0,0,0,.16); }
+    .card h3 { margin: 10px 0 6px; }
+    .card p { color: var(--muted); font-size: .98rem; }
+    .tagbar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag { font-size: .78rem; padding: 6px 10px; border-radius: 999px; background: linear-gradient(90deg, rgba(212,175,55,.15), rgba(212,175,55,.05)); border: 1px solid rgba(212,175,55,.35); color: var(--text); }
+
+    /* About */
+    .about { display: grid; grid-template-columns: 1fr 2fr; gap: 34px; align-items: center; }
+    .profile { width: 220px; height: 220px; border-radius: 50%; margin: 0 auto; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 3rem; background: linear-gradient(135deg, var(--bg-grad-start), var(--bg-grad-end)); box-shadow: var(--shadow); }
+
+    /* Skills */
+    .skill-icon { font-size: 2rem; }
+
+    /* Contact */
+    .contact { background: linear-gradient(135deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%); color: #fff; text-align: center; }
+    .links { display: flex; justify-content: center; gap: 1rem; margin-top: 1.2rem; flex-wrap: wrap; }
+    .link { display: inline-flex; align-items: center; gap: .55rem; color: #fff; text-decoration: none; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.12); transition: transform .2s ease, background .2s ease; }
+    .link:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+    /* Reveal Animations */
+    .hidden { opacity: 0; transform: translateY(24px); }
+    .show { opacity: 1; transform: translateY(0); transition: all .7s ease; }
+
+    /* Responsive */
+    @media (max-width: 900px) { .about { grid-template-columns: 1fr; text-align: center; } }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      header { background: rgba(0,0,0,.25); }
+    }
+    @media (max-width: 480px) {
+      .cta { padding: 10px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main Navigation">
+      <div class="logo" aria-label="Site logo">Harsh Parikh</div>
+      <ul class="nav-links" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="actions">
+        <a class="cta" href="/assets/Harsh_Parikh_Resume.pdf" download aria-label="Download Resume">📄 <span>Resume</span></a>
+        <button id="modeToggle" class="toggle" aria-label="Toggle dark mode">🌙 Mode</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero" aria-labelledby="home-title">
+      <div class="container">
+        <h1 id="home-title">Harsh Parikh</h1>
+        <p class="subtitle" aria-live="polite">AI/ML Developer & Innovator</p>
+        <p class="lead">Transforming ideas into intelligent solutions using deep learning, NLP, computer vision, and scalable MLOps.</p>
+        <a class="cta" href="#contact" aria-label="Go to contact section">Let’s Collaborate ✨</a>
+      </div>
+      <div class="floating-elements" aria-hidden="true">
+        <div class="floating-circle circle1"></div>
+        <div class="floating-circle circle2"></div>
+        <div class="floating-circle circle3"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section alt" aria-labelledby="about-title">
+      <div class="container hidden">
+        <h2 id="about-title" class="section-title">About Me</h2>
+        <div class="about">
+          <div class="about-image">
+            <div class="profile" role="img" aria-label="Profile image placeholder with initials HP">HP</div>
+          </div>
+          <div class="about-text">
+            <p style="font-size:1.05rem; margin-bottom: 1rem;">
+              I'm Harsh Parikh, an AI/ML developer focused on building real‑world AI systems. My work spans model design, data pipelines, evaluation, and production deployment.
+            </p>
+            <p style="font-size:1.05rem; margin-bottom: 1rem;">
+              Tech focus: <strong>TensorFlow</strong>, <strong>PyTorch</strong>, <strong>Transformers</strong>, <strong>OpenCV</strong>, <strong>FastAPI</strong>, and <strong>Docker/Kubernetes</strong>. I love converting research into usable products.
+            </p>
+            <p style="font-size:1.05rem;">
+              Off‑work: reading research papers, contributing to open source, and writing about practical AI.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="container hidden">
+        <h2 id="projects-title" class="section-title">Featured Projects</h2>
+        <div class="grid" role="list">
+          <!-- Project 1: Resume Screening Tool -->
+          <article class="card" role="listitem">
+            <h3>AI Resume Screening Tool</h3>
+            <p>End‑to‑end LLM + NLP pipeline that parses resumes, extracts entities, ranks candidates, and generates explainable summaries.</p>
+            <div class="tagbar">
+              <span class="tag">FastAPI</span><span class="tag">LLM</span><span class="tag">spaCy</span><span class="tag">RAG</span><span class="tag">Docker</span>
+            </div>
+            <p style="margin-top:10px"><a href="#" aria-label="Read more about AI Resume Screening Tool">→ Case Study</a></p>
+          </article>
+
+          <!-- Project 2: OCR & Document AI -->
+          <article class="card" role="listitem">
+            <h3>Document OCR with LLM Correction</h3>
+            <p>TensorFlow‑based OCR (EMNIST/TrOCR) with layout detection and an LLM post‑processor to fix errors and export searchable PDFs.</p>
+            <div class="tagbar">
+              <span class="tag">TensorFlow</span><span class="tag">TrOCR</span><span class="tag">OpenCV</span><span class="tag">LLM</span>
+            </div>
+            <p style="margin-top:10px"><a href="#">→ Demo & Repo</a></p>
+          </article>
+
+          <!-- Project 3: Churn Prediction -->
+          <article class="card" role="listitem">
+            <h3>Customer Churn Prediction</h3>
+            <p>Production ML pipeline with feature store, model monitoring, and SHAP explanations; achieved 0.89 ROC‑AUC on benchmark data.</p>
+            <div class="tagbar">
+              <span class="tag">scikit‑learn</span><span class="tag">MLflow</span><span class="tag">SHAP</span><span class="tag">Airflow</span>
+            </div>
+            <p style="margin-top:10px"><a href="#">→ Notebook</a></p>
+          </article>
+
+          <!-- Project 4: IFMIS Tech Planning -->
+          <article class="card" role="listitem">
+            <h3>GovTech IFMIS Next‑Gen: Tech Stack</h3>
+            <p>Compiled versioned technology stack & architecture recommendations aligned to intervention benefits for a public sector IFMIS bid.</p>
+            <div class="tagbar">
+              <span class="tag">Architecture</span><span class="tag">Microservices</span><span class="tag">Cloud</span>
+            </div>
+            <p style="margin-top:10px"><a href="#">→ Summary</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section alt" aria-labelledby="skills-title">
+      <div class="container hidden">
+        <h2 id="skills-title" class="section-title">Skills & Expertise</h2>
+        <div class="grid">
+          <div class="card" aria-label="Machine Learning">
+            <div class="skill-icon">🧠</div>
+            <h3>Machine Learning</h3>
+            <p>Supervised, unsupervised, and reinforcement learning with production‑ready pipelines.</p>
+          </div>
+          <div class="card" aria-label="Deep Learning">
+            <div class="skill-icon">🤖</div>
+            <h3>Deep Learning</h3>
+            <p>CNNs, RNNs, Transformers; TensorFlow & PyTorch; training/evaluation best practices.</p>
+          </div>
+          <div class="card" aria-label="Natural Language Processing">
+            <div class="skill-icon">💬</div>
+            <h3>Natural Language Processing</h3>
+            <p>Tokenization, NER, embeddings, RAG, chatbots, and evaluation for LLM apps.</p>
+          </div>
+          <div class="card" aria-label="Computer Vision">
+            <div class="skill-icon">👁️</div>
+            <h3>Computer Vision</h3>
+            <p>Image preprocessing, detection, OCR, and document AI using OpenCV + DL models.</p>
+          </div>
+          <div class="card" aria-label="Data Science">
+            <div class="skill-icon">📊</div>
+            <h3>Data Science</h3>
+            <p>EDA, feature engineering, statistical modeling, and compelling visualizations.</p>
+          </div>
+          <div class="card" aria-label="MLOps & Cloud">
+            <div class="skill-icon">☁️</div>
+            <h3>MLOps & Cloud</h3>
+            <p>Docker, K8s, CI/CD, model registries, observability, and cloud deployments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section" aria-labelledby="blog-title">
+      <div class="container hidden">
+        <h2 id="blog-title" class="section-title">Writing & Updates</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>From CNN OCR to TrOCR + LLM: Accuracy Jumps</h3>
+            <p>Notes from migrating an EMNIST‑based OCR to transformer‑based TrOCR with an LLM fixer for noisy scans.</p>
+            <div class="tagbar"><span class="tag">OCR</span><span class="tag">Transformers</span></div>
+          </article>
+          <article class="card">
+            <h3>Designing an Explainable Resume Screener</h3>
+            <p>How I balance retrieval, ranking, bias checks, and transparent scoring in an AI hiring tool.</p>
+            <div class="tagbar"><span class="tag">LLM</span><span class="tag">Responsible AI</span></div>
+          </article>
+          <article class="card">
+            <h3>Shipping ML: My MLOps Checklist</h3>
+            <p>A pragmatic checklist covering data contracts, evaluation, drift, monitoring, and rollback plans.</p>
+            <div class="tagbar"><span class="tag">MLOps</span><span class="tag">Prod</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact section" aria-labelledby="contact-title">
+      <div class="container hidden">
+        <h2 id="contact-title" class="section-title" style="color: #fff;">Let's Connect</h2>
+        <p style="font-size:1.1rem; margin-bottom: 1rem;">Have a project or idea? I’d love to help bring it to life.</p>
+        <div class="links" role="list">
+          <a class="link" role="listitem" href="mailto:harsh706.ai@gmail.com" aria-label="Email Harsh">📧 harsh706.ai@gmail.com</a>
+          <a class="link" role="listitem" href="https://www.linkedin.com/in/harsh-parikh-251283203/" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">💼 LinkedIn</a>
+          <!-- Optional: Add GitHub when ready -->
+          <!-- <a class="link" role="listitem" href="https://github.com/<your-handle>" target="_blank" rel="noopener">🐙 GitHub</a> -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Smooth header background on scroll
+    const header = document.querySelector('header');
+    const setHeaderStyle = () => {
+      if (window.scrollY > 80) {
+        header.style.background = 'rgba(255,255,255,0.95)';
+        header.style.boxShadow = '0 6px 20px rgba(0,0,0,.08)';
+        header.querySelectorAll('a, .logo').forEach(el => el.style.color = '#111827');
+      } else {
+        header.style.background = 'rgba(255,255,255,0.08)';
+        header.style.boxShadow = 'none';
+        header.querySelectorAll('a, .logo').forEach(el => el.style.color = '#fff');
+      }
+      if (document.documentElement.classList.contains('dark')) {
+        header.style.background = window.scrollY > 80 ? 'rgba(2,6,23,0.85)' : 'rgba(17,24,39,0.5)';
+        header.querySelectorAll('a, .logo').forEach(el => el.style.color = '#fff');
+      }
+    };
+    setHeaderStyle();
+    window.addEventListener('scroll', setHeaderStyle);
+
+    // Intersection Observer for reveal animations
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.hidden').forEach(el => io.observe(el));
+
+    // Dark mode: persist preference & align with system
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const root = document.documentElement;
+    const MODE_KEY = 'hp-theme';
+    const applyMode = (mode) => {
+      if (mode === 'dark') root.classList.add('dark');
+      else root.classList.remove('dark');
+    };
+    const stored = localStorage.getItem(MODE_KEY);
+    applyMode(stored || (prefersDark.matches ? 'dark' : 'light'));
+
+    document.getElementById('modeToggle').addEventListener('click', () => {
+      const next = root.classList.contains('dark') ? 'light' : 'dark';
+      applyMode(next); localStorage.setItem(MODE_KEY, next);
+      setHeaderStyle();
+    });
+
+    // Typing effect → CSS-free: progressive reveal
+    const subtitle = document.querySelector('.subtitle');
+    const text = subtitle.textContent.trim();
+    subtitle.textContent = '';
+    let i = 0;
+    const tick = () => { if (i < text.length) { subtitle.textContent += text.charAt(i++); setTimeout(tick, 70); } };
+    setTimeout(tick, 500);
+  </script>
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Harsh Parikh",
+    "jobTitle": "AI/ML Developer",
+    "email": "mailto:harsh706.ai@gmail.com",
+    "url": "https://your-domain.example",
+    "sameAs": [
+      "https://www.linkedin.com/in/harsh-parikh-251283203/"
+    ]
+  }
+  </script>
+
+  <!-- Analytics (replace G-XXXXXXX) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXX');
+  </script>
+  -->
+</body>
+</html>
